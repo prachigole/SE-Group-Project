@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login and Registration form</title>
+    <link rel="stylesheet" href="/CSS/profile.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+  
+
+
+<style>
+    
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #F46036;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  margin: 10px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #F8957A;
+}
+
+
+   input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+</style>
+</head>
+<body>
+
+
+    <ul>
+    <img style="float:right" class="logo" src="/Images/profile_pic.svg">
+  <li style="float:right"><a href="#my_account">My account</a></li>
+  <li style="float:right"><a href="#goals">Goals</a></li>
+  <li style="float:right"><a href="#contact">update food list</a></li>
+  
+    </ul>
+
+   
+
+	<script src="/JS/profile.js"></script>
+    <div class="hero">
+        <div class="form-box">
+            
+            <form id="register" action="/profile" method="post" class="input-group">
+                <h1>User Profile</h1><br><br>
+                <table>
+                	<tr>
+                	<tr>
+                		<td>
+                       <h5>Change email</h5>
+                        <div class="wrapper">
+                        <input type="text" class="ip1" id="email" value="<%= user.email_id %>" required name="email" />
+                    </div>         
+                        </td>
+
+            		<td>
+                             
+                    </td>
+            	</tr>
+            	<tr>
+            		<td>
+            			<h6>Weight in Kgs</h6>
+            			<div class="wrapper">
+            			<img src='/Images/sub.png' class="button" onclick="decrement(this.parentNode.getElementsByTagName('input')[0]);" />
+                		<input type="number" class="ip1" name="weight" value="<%= usergoal.weight %>" placeholder="0" min="0" id="Weight" oninput="this.value = Math.abs(this.value)" required>
+                		<img src='../Images/add.png' class="button" onclick="increment(this.parentNode.getElementsByTagName('input')[0]);" />
+                		
+                	</div>
+
+            		</td>
+            		<td>
+            			<h5>Height in cms</h5>
+            			<div class="wrapper">
+            			<img src='/Images/sub.png' class="button" onclick="decrement(this.parentNode.getElementsByTagName('input')[0]);checkFirst();" />
+                        <input type="text" class="ip1" name="height" value="<%= usergoal.height %>" placeholder="0" min="0"  id="lessthan" oninput="this.value = Math.abs(this.value)" required>
+                        <img src='/Images/add.png' class="button" onclick="increment(this.parentNode.getElementsByTagName('input')[0]);" />
+                	</div>
+            		</td>
+            	</tr>
+            	<tr>
+            		<td>
+            			<h6><label for="level">Activity level</label><br>
+                	<select name="activityType" id="activity" class="input-field1">
+                        <option value="select">Select</option>
+                
+                    <% var selected = (usergoal.activity_type == 1)? "selected" :"";%>
+                    <option value="1" <%= selected %>>low</option>
+                    <% var selected = (usergoal.activity_type == 2)? "selected" :"";%>
+                    <option value="2" <%= selected %>>moderate</option>
+                    <% var selected = (usergoal.activity_type == 3)? "selected" :"";%>
+                    <option value="3" <%= selected %>>high</option>
+                </select>
+                	
+            		</td>
+            		<td>
+            		<h6><label for="gender">Gender</label><br>
+                	<select name="gender" id="gender" class="input-field1">
+                        <option value="select">Select</option>
+                    <% var selected = (user.gender == 1)? "selected" :"";%>
+                    <option value="1"  <%= selected %>>male</option>
+                    <% var selected = (user.gender == 2)? "selected" :"";%>
+                    <option value="2"  <%= selected %>>female</option>
+                    <% var selected = (user.gender == 3)? "selected" :"";%>
+                    <option value="3"  <%= selected %>>others</option>
+                </select>
+            		</td>
+            	</tr>
+                <td>
+                    <h6>Goal weight</h6>
+                        <div class="wrapper">
+                        <img src='/Images/sub.png' class="button" onclick="decrement(this.parentNode.getElementsByTagName('input')[0]);" />
+                        <input type="number" name="goalWeight" value="<%=usergoal.goal_weight%>" class="ip1" id="ip1" placeholder="0" min="0" oninput="this.value = Math.abs(this.value)" required>
+                        <img src='/Images/add.png' class="button" onclick="increment(this.parentNode.getElementsByTagName('input')[0]);" />
+                    </div>
+                </td>
+
+                <td>
+                        <h5>Time period to reach goal</h5>
+                        <select name="goalDuration" class="input-field1" id="month" onchange="setGoal();">
+                            <option value="Select">Select</option>
+                            <% var selected = (usergoal.goal_duration == 1)? "selected" :"";%>
+                            <option value="1" <%= selected %>>1 MONTH</option>
+                            <% var selected = (usergoal.goal_duration == 2)? "selected" :"";%>
+                            <option value="2" <%= selected %>>2 MONTHS</option>
+                            <% var selected = (usergoal.goal_duration == 3)? "selected" :"";%>
+                            <option value="3" <%= selected %>>3 MONTHS</option>
+                            <% var selected = (usergoal.goal_duration == 4)? "selected" :"";%>
+                            <option value="4" <%= selected %>>4 MONTHS</option>
+                            <% var selected = (usergoal.goal_duration == 5)? "selected" :"";%>
+                            <option value="5" <%= selected %>>5 MONTHS</option>
+                            <% var selected = (usergoal.goal_duration == 6)? "selected" :"";%>
+                            <option value="6" <%= selected %>>6 MONTHS</option>
+
+                        </select>
+                    </td>
+
+            	</tr>
+            </table>
+                <span id="msg"></span>
+                <button type="submit" class="submit-btn">Reset Goals</button>
+               
+            </form>
+        </div>
+        <img class="img" src="/Images/bg.svg" width="250" height="250">
+      
+    </div>
+</body>
+</html>
