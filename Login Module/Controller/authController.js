@@ -7,6 +7,7 @@ const genrateOpt = () => {
 }
 
 exports.login = (req,res,next) =>{
+      
       res.render("login.ejs")
 }
 

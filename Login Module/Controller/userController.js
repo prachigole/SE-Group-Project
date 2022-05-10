@@ -1,5 +1,6 @@
 
 const axios = require("axios");
+const { response } = require("express");
 
 const User = require('../Model/user')
 
@@ -50,7 +51,6 @@ exports.bmi = async (req,res,next) =>{
     };
       const response = await axios.request(bmi)
       req.session.bmi = response.data.info.bmi
-      console.log(response)
       if(response.status == 200)
           return res.render('bmi', 
                         {data : response.data.info
@@ -92,9 +92,9 @@ exports.postBmi = async (req,res,next) =>{
       if(weight > goalWeight)
             goal_type = 1
       else if(goalWeight > weight)
-            goal_type = 2
-      else
             goal_type = 3
+      else
+            goal_type = 2
 
 
       if(activity_type == 1)
@@ -104,34 +104,52 @@ exports.postBmi = async (req,res,next) =>{
       else
             bmr += 900
 
-       User.create({
-            name: req.session.userDetails.username,
-            email_id: req.session.email,
-            dob: req.session.userDetails.dob,
-            gender: req.session.userDetails.gender,
-            user_type: 2,
-      })
-      .then(result =>{
-            console.log(result.dataValues)
-            let user
-            User.findAll({where: {email_id: req.session.email}})
-            .then(users =>{ req.session.user = users[0]
-            
-            UserGoal.create({
-                  weight: req.session.userDetails.weight,
-                  height: req.session.userDetails.height,
-                  activity_type:req.session.userDetails.activityLevel,
-                  bmi: req.session.bmi,
-                  goal_duration: req.session.userDetails.duration,
-                  targetted_calories: bmr,
-                  goal_weight: req.session.userDetails.goalWeight,
-                  goal_type: goal_type,
-                  userUserId: req.session.user.user_id
+      if(!req.session.isResetGoal == true)
+      {
+            User.create({
+                  name: req.session.userDetails.username,
+                  email_id: req.session.email,
+                  dob: req.session.userDetails.dob,
+                  gender: req.session.userDetails.gender,
+                  user_type: 2,
             })
-            .then(result => res.redirect('/user'))
+            .then(result =>{
+                 
+                  let user
+                  User.findAll({where: {email_id: req.session.email}})
+                  .then(users =>{ req.session.user = users[0]
+                  
+                  UserGoal.create({
+                        weight: req.session.userDetails.weight,
+                        height: req.session.userDetails.height,
+                        activity_type:req.session.userDetails.activityLevel,
+                        bmi: req.session.bmi,
+                        goal_duration: req.session.userDetails.duration,
+                        targetted_calories: bmr,
+                        goal_weight: req.session.userDetails.goalWeight,
+                        goal_type: goal_type,
+                        userUserId: req.session.user.user_id
+                  })
+                  .then(result => res.redirect('/user'))
+                  })
             })
-      })
-      .catch(err => res.redirect('/login'))
+            .catch(err => res.redirect('/login'))
+      }
+      else 
+      {
+           const user = await User.findOne({where: {email_id: req.session.email}})
+           const userId = user.user_id
+
+           UserGoal.update({
+                  targetted_calories:bmr,
+                  goal_type:goal_type
+            },{where: {userUserId: userId}})
+            .then(result =>{
+                  res.redirect('/user')
+            })
+            .catch(err => console.log(err))
+        
+      }
  }
 
 exports.profile = async (req,res,next) => {
@@ -146,6 +164,9 @@ exports.profile = async (req,res,next) => {
 exports.saveProfile = async (req,res,next) => {
       const user = await User.findOne({where: {email_id: req.session.email}})
       const userId = user.user_id
+      req.session.userDetails = req.body
+      req.session.userDetails.dob = user.dob
+      req.session.userDetails.gender = user.gender
      
       User.update({
                   email_id: req.body.email,
@@ -158,13 +179,17 @@ exports.saveProfile = async (req,res,next) => {
                   weight: parseFloat(req.body.weight),
                   goal_weight: parseFloat(req.body.goalWeight),
                   height:  parseInt(req.body.height),
-                  activity_type: req.body.activityType,
+                  activity_type: req.body.activityLevel,
                   goal_duration: req.body.goalDuration
             },{where: {userUserId: userId}})
       .then(result =>{
             console.log(result)
+            req.session.isResetGoal = true;
+            res.redirect('/bmi')
       })
       })
+      .catch(err => console.log("Error on Updating Reset Profile" + err))
+
       console.log(req.body)
 }
 
