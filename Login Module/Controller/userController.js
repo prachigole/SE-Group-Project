@@ -144,6 +144,27 @@ exports.profile = async (req,res,next) => {
 }
  
 exports.saveProfile = async (req,res,next) => {
+      const user = await User.findOne({where: {email_id: req.session.email}})
+      const userId = user.user_id
+     
+      User.update({
+                  email_id: req.body.email,
+                  gender: req.body.gender
+      },
+      {where: {email_id: req.session.email}})
+      .then(result =>{
+            console.log("user:" + result)
+            UserGoal.update({
+                  weight: parseFloat(req.body.weight),
+                  goal_weight: parseFloat(req.body.goalWeight),
+                  height:  parseInt(req.body.height),
+                  activity_type: req.body.activityType,
+                  goal_duration: req.body.goalDuration
+            },{where: {userUserId: userId}})
+      .then(result =>{
+            console.log(result)
+      })
+      })
       console.log(req.body)
 }
 
