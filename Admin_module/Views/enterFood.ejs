@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/Css/styles.css">
+        <script src="/Js/index.js"></script>
+        
+        <title>Add Food Item</title>
+    </head>
+<body>
+    <div class="main2">
+        <div class="navbar">
+            <img src="/Images/profile.svg" alt="Profile pic">
+            
+            <a href="/User/Admin/adminProfile"><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Profile</p></a>
+            <a href="/food/Admin/Dashboard"><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Home</p></a>
+        </div>
+
+
+        <% if(formType == "create")
+                {
+                    %>
+                    <form action="/food/Admin/NewFoodItem" class="form-container" method="post">
+                        <%
+        } else {%>
+            <form action="/food/Admin/EditFoodItem" class="form-container" method="post">
+                <%
+        } %>
+            <form action="/food/Admin/NewFoodItem" class="form-container" method="post">
+            <h1>Food Item</h1>
+            <div class="errormsg"><%= message %></div>
+            <input type="hidden" name="food_id" value="<%=foodData.food_id %>" />
+
+            <label for="text"><b>Food Name</b></label>
+            <input type="text" placeholder="Enter Food Name" name="food_name" value="<%=foodData.food_name %>">
+        
+            <label for="select"><b>Food Type</b></label>
+            <select name="food_type" id="food-type">
+                <option value="null" selected="true" disabled> -- Select Food Type --</option>
+                        <% for (var key in foodType)
+                        {
+                            %>
+                            <option value="<%= key %>" <%if (foodData.food_type == key){ %> selected="true" <% } %> ><%= foodType[key] %></option>
+
+                            <%
+                        }%>
+            </select>
+
+            <label for="calories"><b>Calories</b></label>
+            <input type="text" id="calories" placeholder="Enter Food Calories" value="<%= foodData.calories %>" name="calories">
+
+            <label for="psw"><b>Calorie Level</b></label>
+            <select name="calory_level" id="cars">
+                <option value="null" selected="true" disabled> -- Select Calory Level --</option>
+                    <% for (var key in caloryLevel)
+                    {
+                        %>
+                        <option value="<%= key %>" <%if (foodData.calory_level == key){ %> selected="true" <% } %> ><%= caloryLevel[key] %></option>
+
+                        <%
+                    }%>
+            </select>
+
+            <label for="number"><b>Qty</b></label>
+            <input type="text" id="quantity" placeholder="Enter Food Quantity" value="<%= foodData.quantity %>" name="quantity">
+
+            <label for="select"><b>Meal Type</b></label>
+            <select name="meal_type" id="cars">
+                <option value="null" selected="true" disabled> -- Select Meal Type --</option>
+                    <% for (var key in mealType)
+                    {
+                        %>
+                        <option value="<%= key %>" <%if (foodData.meal_type == key){ %> selected="true" <% } %> > <%= mealType[key] %></option>
+
+                        <%
+                    }%>
+            </select>
+            <button type="submit" class="btn">Save</button>
+            </form>
+    </div>
+</body>
+
+</html>

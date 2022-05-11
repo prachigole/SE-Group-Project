@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Css/styles.css">
+    <script src="/Js/index.js"></script>
+    <title>Admin</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="navbar">
+            <img src="/Images/profile.svg" alt="Profile pic">
+            
+            <a href="/User/Admin/adminProfile"><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Profile</p></a>
+            <a href="/food/Admin/Dashboard"><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Home</p></a>
+        </div>
+        <div class="left">
+            <div class="box">
+                <div class="breakfast meal">
+                    <p>Breakfast Items</p>
+                    <h1>
+                        <%= query.breakfast %>
+                    </h1>
+                </div>
+                <div class="lunch meal">
+                    <p>Lunch Items</p>
+                    <h1>
+                        <%= query.lunch %>
+                    </h1>
+                </div>
+                <div class="snacks meal">
+                    <p>Snacks Items</p>
+                    <h1>
+                        <%= query.snacks %>
+                    </h1>
+                </div>
+                <div class="dinner meal">
+                    <p>Dinner Items</p>
+                    <h1>
+                        <%= query.dinner %>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="page-header">
+                <h1>Admin Dashboard</h1>
+            </div>
+            <div class="total-users">
+                <h3>Total Users: <%= query.userCount %>
+                </h3>
+            </div>
+            <div class="add-food add-item display-item">
+                <div class="food-name">
+                    <p>Add Food Item...</p>
+                </div>
+                <div class="food-calories">
+                    <p>Calories</p>
+                </div>
+                <div class="add-food-item">
+                    <a href="/food/Admin/NewFoodItem"><img src="/Images/add.svg" alt="add-icon"></a>
+                </div>
+            </div>
+            <div class="foodBox" style="height: 300px;overflow:scroll;">
+                <%if (foodData.length> 0){ %>
+                    <% foodData.forEach(function(data){ %>
+                        <div class="display-food display-item">
+                            <div class="food-name">
+                                <p>
+                                    <%= data.food_name %>
+                                </p>
+                            </div>
+                            <div class="food-calories calories">
+                                <p>
+                                    <%= data.calories %>
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <a href="/food/Admin/DeleteFood/<%= data.food_id %>"><img src="/Images/remove.svg" alt="remove"></a>
+                                    <a href="/food/Admin/EditFoodItem/<%= data.food_id %>"><img src="/Images/Edit.png" alt="edit"></a>
+                                </p>
+                            </div>
+                        </div>
+                        <% }) }else{ %>
+                            <div class="display-food display-item">
+                                No Food Item Found
+                            </div>
+                            <% } %>
+            </div>
+            <br><br>
+            
+            <div class="add-excercise add-item">
+                <div class="excercise-name">
+                    <p>Add Excercise...</p>
+                </div>
+                <div class="excercise-calories calories">
+                    <p>Excercise Level</p>
+                </div>
+                <div class="add-excercise">
+                    <a href="/Excercise/Admin/NewExcercise"><img src="/Images/add.svg" alt="add-icon"></a>
+                </div>
+            </div>
+            
+            <div class="exeBox" style="height: 300px;overflow:scroll;">
+            <%if (excerciseData.length> 0){ %>
+                <% excerciseData.forEach(function(data){ %>
+                    <div class="display-excercise display-item">
+                        <div class="excercise-name">
+                            <p>
+                                <%= data.excercise_name %>
+                            </p>
+                        </div>
+                        <div class="excercise-calories calories">
+                            <p>
+                                <%= Levels[data.excercise_level] %>
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <p>
+                                <a href="/Excercise/Admin/DeleteExcercise/<%= data.excercise_id %>"><img src="/Images/remove.svg" alt="remove"></a>
+                                <a href="/Excercise/Admin/EditExcercise/<%= data.excercise_id %>"><img src="/Images/Edit.png" alt="edit"></a>
+                            </p>
+                        </div>
+                    </div>
+                    <% }) }else{ %>
+                        <div class="display-excercise display-item">
+                            No Food Item Found
+                        </div>
+                        <% } %>
+                    </div>
+        </div>
+        <div class="right">
+            <div class="page-header">
+                <h3>Users are requesting these food item details!</h3>
+            </div>
+            <div class="food-recommendations">
+                <div class="exeBox" style="height: 400px;overflow:scroll;">
+                    <%if (Foodfeed.length> 0){ %>
+                        <% Foodfeed.forEach(function(data){ %>
+
+                        <div class="food">
+                            <div class="name">
+                                <p> <%= data.description %></p>
+                            </div>
+                            <div class="edit">
+                                <a href="/food/Admin/RemoveSuggestedFood/<%= data.feedback_id%>"><img src="/Images/Remove.svg" alt="remove"></a>
+                                <a href="/food/Admin/AddSuggestedFood/<%= data.feedback_id%>"><img src="/Images/add.svg" alt="add"></a>
+                            </div>
+                        </div>
+                        <% }) }else{ %>
+                            <div class="food-msg">
+                                No Suggested Food Item Found
+                            </div>
+                            <% } %>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
