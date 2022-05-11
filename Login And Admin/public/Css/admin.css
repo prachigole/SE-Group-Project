@@ -1,0 +1,306 @@
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.errormsg {
+    color : #F46036;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.food-msg {
+ margin-top: 10%;
+ padding: 2%;
+ color :#F46036;
+ text-align: center;
+ font-size: 20px;
+}
+
+.form-popup{
+    width: 400px;
+}
+/* The popup form - hidden by default */
+.form-popup {
+  position: absolute;
+  display: block;
+  top: 25%;
+  left: 25%;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  width: 50%;
+  height: 95%;
+  background-color: white;
+  border: 3px solid #F46036;
+  border-radius: 10px;
+  margin : 2% 25% ;
+  padding: 2%;
+  /* justify-content: center; */
+  
+}
+
+.form-container2 {
+    width: 40%;
+    height: 60%;
+    margin : 10% 30%;
+    padding: 2%;
+    /* justify-content: center; */
+    
+  }
+select, input{
+    padding: 1%;
+    margin: 0;
+    height: 40px;
+    width: 350px;
+    margin-bottom: 1%;
+    border: solid 2px #F46036;
+    border-radius: 5px;
+}
+
+
+/* When the inputs get focus, do something */
+
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #F46036;
+  color: white;
+  display: block;
+  text-align: center;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  margin-bottom:7px;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .submit {
+  background-color: #F46036;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+
+
+.main{
+    /* display: flex;
+    flex-direction: column; */
+
+    /* border: 1px solid gray; */
+    display: grid;
+    grid-template-rows: 100px 620px;
+    grid-template-columns: 20% 60% 20%;
+}
+
+.main2{
+    /* display: flex;
+    flex-direction: column; */
+
+    /* border: 1px solid gray; */
+    display: grid;
+    grid-template-rows: 100px 620px;
+}
+h1{
+    text-align: center;
+    margin-bottom: 10px;;
+}
+h3{
+    text-align: center;
+}
+/* .nav-menu{
+    background-color: #F46036;
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+} */
+
+/*
+.nav-menu{
+    background: #F46036;
+    grid-column: 1/-1;
+
+}
+.nav-menu img{
+    position: relative;
+    width: 10%;
+    height: 90%;
+    margin-top: 5px;
+    margin-left: 30px;
+    float:right;
+}
+*/
+
+.navbar{
+    background: #F46036;
+    grid-column: 1/-1;
+
+}
+.navbar img{
+    position: relative;
+    width: 10%;
+    height: 90%;
+    margin-top: 5px;
+    margin-left: 30px;
+    float:right;
+}
+.navbar a{
+    position: relative;
+    float:right;
+    line-height: 100px;
+    text-decoration: none;
+    color: #FFFFFF;
+    margin-left: 30px;
+
+}
+/* .contents{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5%;
+} */
+/* .left{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 20px;
+    justify-content: end;
+}
+.middle{
+    width: 60%;
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 20%;
+    margin: 20px;
+} */
+.box{
+
+    padding: 2% 3%;
+    width: 90%;
+    /* border: 3px solid green; */
+    margin: 30px auto 30px auto;
+    /* font-size: 20px; */
+    background: rgba(255, 255, 255, 0.5);
+    /* border: 3px solid #F46036;
+    border-radius: 10px; */
+}
+.middle{
+    background-color: #cccccc;
+    background-position-y: bottom;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    background-size: 60%;
+    padding: 2% 3%;
+    margin: 2%;
+}
+
+.page-header {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-right: 5%;
+}
+.total-users{
+    margin-bottom: 5%;
+
+}
+.left{
+    background-color: #FFFFFF;
+    margin-top: 80px;
+    justify-content: end;
+}
+.right{
+    background-color: #FFFFFF;
+    margin-top: 80px;
+    justify-content: start;
+}
+.meal{
+    padding: 7% 7%;
+    height: 20%;
+    margin-top: 12px;
+    display: flex;
+    font-size: 20px;
+    border-radius: 5px;
+    border: solid 2px #F46036;
+    flex-direction: column;
+    align-items: center;
+}
+.add-item,
+.display-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    border: solid 2px #F46036;
+    height: 40px;
+    align-items: center;
+}
+
+.add-item{
+    font-weight: bold;
+}
+.display-item{
+    margin-top: 10px;
+
+}
+.calories{
+    display: flex;
+    justify-content: center;
+}
+.food{
+    display: flex;
+    margin-top:5%;
+    flex-direction: column;
+}
+.name{
+    height: 25px;
+    text-align: center;
+    align-items: center;
+}
+.edit{
+    display: flex;
+    justify-content: center;
+    
+}
+button{
+    margin: 10px;
+    background-color: transparent;
+    border: none;
+}
+.food-recommendations{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 5%;
+    border-radius: 5px;
+    border: solid 2px #F46036;   
+}
+
+.labelDiv{
+    text-align: left;
+    float: left;
+}

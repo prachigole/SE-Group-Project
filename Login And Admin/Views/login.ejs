@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/Css/login.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            
+            <div class="left-container">
+                <div class="image">
+                        
+                </div>
+            </div>
+            <div class="right-container">
+                  <center><h1>Login</h1></center>
+                  <div class="login-form">
+                    <img src="/Images/undraw_profile_pic_ic-5-t 1.svg" alt="image Not found">
+                    <form action="/send-otp" method="POST">
+                        <label for="Email">Email</label>
+                    </br>
+                        <input required type="email"  name="email" id="Email" onchange="loginValidation(this.id);">     
+                   </br>       
+                    <button type="submit" class="btn-register" style="margin-top: 60px; " onclick="loginValidation();">Send OTP</button>
+                    </form>  
+                  </div>
+                 
+            </div>
+            <img src="/Images/undraw_fitness_tracker_3033 1.svg" alt="this images not found">
+        
+        </div>
+        <script type="text/javascript" src="/Js/login.js"></script>
+    </body>
+</html>
