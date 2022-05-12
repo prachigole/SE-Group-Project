@@ -21,23 +21,27 @@ const userGoal = sequelize.define('userGoals', {
       },
 
       activity_type: {
-            type: DataTypes.TINYINT,
+            type: DataTypes.BOOLEAN,
             allowNull: false
       },
 
       goal_type: {
-            type: DataTypes.TINYINT,
+            type: DataTypes.BOOLEAN,
             allowNull: false
       },
 
-      
+      goal_weight: {
+            type: DataTypes.SMALLINT,
+            allowNull: false
+      },
+
       targetted_calories: {
             type: DataTypes.MEDIUMINT,
             allowNull: false
       },
 
       goal_duration: {
-            type: DataTypes.TINYINT,
+            type: DataTypes.BOOLEAN,
             allowNull: false
       },
 
@@ -45,8 +49,6 @@ const userGoal = sequelize.define('userGoals', {
             type: DataTypes.FLOAT(10,2),
             allowNull: false
       }
-},{
-      timestamps:false
 })
 
 module.exports = userGoal

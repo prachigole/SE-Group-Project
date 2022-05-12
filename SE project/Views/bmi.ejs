@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../CSS/BMIPage.css">
     </head>
-    <body onload="setSlider();">
+    <body>
         <div class="main">
             <div class="navbar"> 
                 <a href=""><p style="font-family:'Roboto';font-style: normal;font-size: 20px;"></p></a>
@@ -20,10 +20,11 @@
                         <img src="../images/bmi.jpg"/>
                     </div>
                     <div class="slidecontainer">
-                        <Input class="range" type="range" id="myRange" value="<%= data.bmi%>" min="0" max="39.9">  
-                        
+                        <input class="range" type="range" id="myRange" value="<%= data.bmi %>" min="0" max="39.9">  
+                       
                          <!-- <input type="range" name="bmi" 
                          min="0" max="39.9" value="25" > -->
+                
                     </div>    
                     <div class="range-title">
                         <p>Underweight</p>

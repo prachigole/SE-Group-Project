@@ -3,7 +3,7 @@ const {Sequelize, DataTypes} = require('sequelize')
 
 const sequelize = require('../Utils/dbConnection') //database change
 
-const meal_consumption = sequelize.define('meal', {
+const meal_consumption = sequelize.define('user_meal_consumption', {
     consumption_id : {
         type: DataTypes.INTEGER,
         primaryKey : true,

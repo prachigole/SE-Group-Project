@@ -332,11 +332,11 @@ color: white;
                            <% let index=0 %>
                            <% if(breakfast==0){food.forEach(f=>{ %>
 
-                            <%   if(f.dataValues.Meal_time==1){ %>
+                            <%   if(f.dataValues.meal_type==1){ %>
                                 <hidden style="display:none;" id="<%=(index+1)%>"><%=f.dataValues.food_id%></hidden>
 
                                     <tr>
-                                        <td><%=f.dataValues.name%></td>
+                                        <td><%=f.dataValues.food_name%></td>
                                         <% if(f.dataValues.food_type==1){%>
                                             <td><img src="./images/veg.png" style="height: 20px;"/></td>
                                         <% }else{%>
@@ -357,7 +357,7 @@ color: white;
                             <% meal.forEach(e=>{%>
                                 <% if(e.dataValues.consumption_time==1){ %>
                                     <tr>
-                                        <td><%=e.dataValues.food.name%></td>
+                                        <td><%=e.dataValues.food.food_name%></td>
                                         <% if(e.dataValues.food.food_type==1){%>
                                             <td><img src="./images/veg2.JPG" style="height: 20px;"/></td>
                                         <% }else{%>
@@ -386,14 +386,13 @@ color: white;
                     <div id="lunch-food" class="food lunch-food">
                         <table id="lunch-item">
                             <% let index1=500 %>
-                            <% if(lunch==0){%>
                             <% food.forEach(f=>{ %>
  
-                             <%   if(f.dataValues.Meal_time==2){ %>
+                             <%   if(f.dataValues.meal_type==2){ %>
                                  <hidden style="display:none;" id="<%=(index1+1)%>"><%=f.dataValues.food_id%></hidden>
  
                                      <tr>
-                                         <td><%=f.dataValues.name%></td>
+                                         <td><%=f.dataValues.food_name%></td>
                                          <% if(f.dataValues.food_type==1){%>
                                              <td><img src="./images/veg.png" style="height: 20px;"/></td>
                                          <% }else{%>
@@ -410,11 +409,11 @@ color: white;
  
                              <%    index1+=4}%>
  
-                            <%})} else { %>
+                            <%})/*} else { %>
                                 <% meal.forEach(e=>{%>
                                     <% if(e.dataValues.consumption_time==2){ %>
                                         <tr>
-                                            <td><%=e.dataValues.food.name%></td>
+                                            <td><%=e.dataValues.food.food_name%></td>
                                             <% if(e.dataValues.food.food_type==1){%>
                                                 <td><img src="./images/veg.png" style="height: 20px;"/></td>
                                             <% }else{%>
@@ -426,7 +425,7 @@ color: white;
                                         </tr>    
                                     <%}%>
                                 <%})%>
-                            <%}%>
+                            <%}*/%>
                              
                         </table>
                         <%if(lunch==0){%>
@@ -446,11 +445,11 @@ color: white;
                             <% if(dinner==0){%>
                             <% food.forEach(f=>{ %>
  
-                             <%   if(f.dataValues.Meal_time==2){ %>
+                             <%   if(f.dataValues.meal_type==2){ %>
                                  <hidden style="display:none;" id="<%=(index2+1)%>"><%=f.dataValues.food_id%></hidden>
  
                                      <tr>
-                                         <td><%=f.dataValues.name%></td>
+                                         <td><%=f.dataValues.food_name%></td>
                                          <% if(f.dataValues.food_type==1){%>
                                              <td><img src="./images/veg.png" style="height: 20px;"/></td>
                                          <% }else{%>
@@ -471,7 +470,7 @@ color: white;
                                 <% meal.forEach(e=>{%>
                                     <% if(e.dataValues.consumption_time==3){ %>
                                         <tr>
-                                            <td><%=e.dataValues.food.name%></td>
+                                            <td><%=e.dataValues.food.food_name%></td>
                                             <% if(e.dataValues.food.food_type==1){%>
                                                 <td><img src="./images/veg.png" style="height: 20px;"/></td>
                                             <% }else{%>
@@ -624,7 +623,7 @@ function getBreakfastData(){
             day_str = "Saturday";
             break;
       }
-      var final_d = `${day} ${month_str} ${year}, ${day_str}`;
+      var final_d = `${day} ${month_str} ${year}`;
       console.log(final_d);
       d.innerHTML = `${final_d}`;
 }
@@ -763,9 +762,9 @@ function viewSelectedLunchItems()
          'content-type':'application/json'
         },
         body:JSON.stringify(select_lunch_food)
-    }).done(setTimeout(() => {
+     }).done(setTimeout(() => {
             window.location.reload();
-        }, 500));
+         }, 500));
 
     alert("Your Lunch data is submitted successfully");
 }

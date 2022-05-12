@@ -12,18 +12,48 @@ const Meal=require("../Model/user_meal_consumption")
 const date = require('date-and-time');
 const { join } = require("path");
 const food = require("../Model/food");
+const { response } = require("express");
+const { user } = require("./userController");
 
 exports.progress = async(req,res,next)=>{
-    res.render("progress");
-}
-
-exports.postprogress=async(req,res,next)=>{
+    if(req.session.user){
     const userGoal = await UserGoal.findAll(
         {
               where:
               {
-                    userUserId: 1//req.session.user.user_id
-              }
+                    userUserId: req.session.user.user_id
+              },
+              order:[
+                    ['createdAt','DESC']
+              ]
+        })
+    console.log(userGoal[0].dataValues)
+    let date1=new Date();
+    let date2=userGoal[0].dataValues.createdAt;
+    let goal_dur=userGoal[0].dataValues.goal_duration;
+
+    let date3=date.addDays(date2,goal_dur*28);
+    console.log(date3)
+    if(date1==date3)
+        res.render("progress");
+    else
+        res.redirect("user_daily_progress")
+    }
+    else   
+        res.redirect("/login")
+}
+
+exports.postprogress=async(req,res,next)=>{
+    if(req.session.user){
+    const userGoal = await UserGoal.findAll(
+        {
+              where:
+              {
+                    userUserId: req.session.user.user_id
+              },
+              order:[
+                    ['createdAt','DESC']
+              ]
         })
     console.log(userGoal[0].dataValues);
     let updatedWeight=req.body.value;
@@ -33,11 +63,11 @@ exports.postprogress=async(req,res,next)=>{
     let remarks
     const type=userGoal[0].dataValues.goal_type;
     
-    if(type==1)
+    if(type==2)
     {
         remarks="You are achieving your goal"
     }    
-    else if(type==2){
+    else if(type==3){
         let w=updatedWeight-currentWeight;
         remarks="You have sucessfully followed your diet and you have gained "+w+" kg";
     }
@@ -51,17 +81,21 @@ exports.postprogress=async(req,res,next)=>{
         updated_weight:parseInt(req.body.value),
         bmi,
         remarks,
-        userUserId:1 //session
+        userUserId:req.session.user.user_id //session
     })
         .then(result=> res.redirect('/daily_progress'))
         .catch(err=>console.log(err))
+    }
+    else    
+        res.redirect('login')
 }
 
 exports.daily_progress=async(req,res,next)=>{
+    if(req.session.user){    
     const userp=await UserProgress.findAll(
         {
             where:{
-                userUserId:1
+                userUserId:req.session.user.user_id
 
             },
             order:[
@@ -71,7 +105,7 @@ exports.daily_progress=async(req,res,next)=>{
 
     const usergoal=await UserGoal.findAll({
         where:{
-            userUserId:1
+            userUserId:req.session.user.user_id
         },
         order:[
             ['goad_id','DESC']
@@ -80,19 +114,81 @@ exports.daily_progress=async(req,res,next)=>{
 
     const exercise=await Exercise.findAll({
         where:{
-            exercise_level:usergoal[0].dataValues.activity_type
+            excercise_level:usergoal[0].dataValues.activity_type
         }
     })
+    res.render('daily_progress',{userp:userp[0].dataValues,exercise,goal_day:usergoal[0].dataValues.goal_duration});
+    }
+    else    
+        res.redirect('login')
 
-    exercise.forEach(e=>{
-        console.log(e.dataValues.exercise_name)
+}
+
+exports.user_daily_progress=async(req,res,next)=>{
+    if(req.session.user){
+
+    const usergoal=await UserGoal.findAll({
+        where:{
+            userUserId:req.session.user.user_id
+        },
+        order:[
+            ['goad_id','DESC']
+        ]
     })
 
-    res.render('daily_progress',{userp:userp[0].dataValues,exercise,goal_day:usergoal[0].dataValues.goal_duration});
+    const exercise=await Exercise.findAll({
+        where:{
+            excercise_level:usergoal[0].dataValues.activity_type
+        }
+    })
+    res.render('udaily_progress',{exercise,goal_day:usergoal[0].dataValues.goal_duration});
+    }
+    else    
+        res.redirect('login')
+
+}
+
+
+exports.checkProgress=async(req,res)=>{
+    const usergoal=await UserGoal.findAll({
+        where:{
+            userUserId:req.session.user.user_id
+        },
+        order:[
+            ['goad_id','DESC']
+        ]
+    })    
+        let date1=usergoal[0].dataValues.createdAt
+        let datax=req.params.id-1
+        let date2=date1
+        let date3=new Date()
+        if(datax>0)
+            date2=date.addDays(date1,datax)
+        if(date2>date3)
+            res.json(3)
+        else{
+            const meal=await Meal.findAll({
+                where:{
+                    userUserId:req.session.user.user_id, //session
+                    consumption_date:date2
+                },
+                include: [{
+                    model: food,
+                    required: true
+                   }]    
+            })
+        
+            if(meal.length>0)
+            {    
+                res.json(1)
+            }
+            else
+                res.json(2)
+        }
 }
 
 exports.user_daily=async(req,res)=>{
-    
+    if(req.session.user){
     const date1=new Date();
     const days=req.params.id;
     console.log(days)
@@ -103,7 +199,7 @@ exports.user_daily=async(req,res)=>{
         console.log(date2);
     const meal=await Meal.findAll({
         where:{
-            userUserId:1, //session
+            userUserId:req.session.user.user_id, //session
             consumption_date:date2
         },
         include: [{
@@ -123,7 +219,7 @@ exports.user_daily=async(req,res)=>{
         {
               where:
               {
-                    userUserId: 1//req.session.user.user_id
+                    userUserId: req.session.user.user_id
               }
         })
     let cal=0
@@ -134,4 +230,7 @@ exports.user_daily=async(req,res)=>{
     console.log(date2)
     res.render("user_daily_progress",{meal:meal,goal_cal:userGoal[0].dataValues.targetted_calories,user_cal:cal,date:date2,day:days});
     }
+    }
+    else    
+        res.redirect("/login")
 }

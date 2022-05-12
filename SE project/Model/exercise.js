@@ -1,26 +1,24 @@
 const {Sequelize, DataTypes} = require('sequelize')
 
-const sequelize = require('../Utils/dbConnection') //database change
+const sequelize = require('../Utils/dbConnection')
 
-const exercise = sequelize.define('exercise', {
+const excercise = sequelize.define("excercise", {
+      excercise_id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+      },
+      excercise_name: {
+        type: Sequelize.STRING(30),
+        allowNull: false
+      },
+      excercise_level: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      }   
+    },{
+      timestamps:false
+  });
 
-    exercise_id : {
-        type: DataTypes.TINYINT,
-        primaryKey : true,
-        autoIncrement : true,
-        allowNull : false,
-
-    },
-    exercise_name : {
-        type : DataTypes.STRING(40),
-        allowNull : false,
-    },
-    exercise_level : {
-        type: DataTypes.TINYINT,
-        allowNull : false,
-    },
-
-},{
-    timestamps:false
-})
-module.exports = exercise
+module.exports = excercise;

@@ -270,7 +270,7 @@ color: white;
     <body>
         <div class="main">
             <div class="navbar">
-                <img src="./images/profile_pic.svg" alt="Profile pic">
+                <img src="/Images/profile_pic.svg" alt="Profile pic">
                 
                 <a href=""><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">My Account</p></a>
                 <a href=""><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Goals</p></a>
@@ -297,11 +297,11 @@ color: white;
                             <% meal.forEach(e=>{%>
                                 <% if(e.dataValues.consumption_time==1){ %>
                                     <tr>
-                                        <td><%=e.dataValues.food.name%></td>
+                                        <td><%=e.dataValues.food.food_name%></td>
                                         <% if(e.dataValues.food.food_type==1){%>
-                                            <td><img src="./images/veg.png" style="height: 20px;"/></td>
+                                            <td><img src="/Images/veg.png" style="height: 20px;"/></td>
                                         <% }else{%>
-                                            <td><img src="./images/nonveg.jpg" style="height: 20px;"/></td>
+                                            <td><img src="/Images/nonveg.jpg" style="height: 20px;"/></td>
                                         <% }%>
                                         <td><%=e.dataValues.food.quantity%></td>
                                         <td><%=e.dataValues.food.calories%> KCals</td>
@@ -329,11 +329,11 @@ color: white;
                             <% meal.forEach(e=>{%>
                                 <% if(e.dataValues.consumption_time==2){ %>
                                     <tr>
-                                        <td><%=e.dataValues.food.name%></td>
+                                        <td><%=e.dataValues.food.food_name%></td>
                                         <% if(e.dataValues.food.food_type==1){%>
-                                            <td><img src="./images/veg2.JPG" style="height: 20px;"/></td>
+                                            <td><img src="/Images/veg2.JPG" style="height: 20px;"/></td>
                                         <% }else{%>
-                                            <td><img src="./images/nonveg.jpg" style="height: 20px;"/></td>
+                                            <td><img src="/Images/nonveg.jpg" style="height: 20px;"/></td>
                                         <% }%>
                                         <td><%=e.dataValues.food.quantity%></td>
                                         <td><%=e.dataValues.food.calories%> KCals</td>
@@ -355,11 +355,11 @@ color: white;
                         <table id="dinner-item">                            <% meal.forEach(e=>{%>
                             <% if(e.dataValues.consumption_time==3){ %>
                                 <tr>
-                                    <td><%=e.dataValues.food.name%></td>
+                                    <td><%=e.dataValues.food.food_name%></td>
                                     <% if(e.dataValues.food.food_type==1){%>
-                                        <td><img src="./images/veg.png" style="height: 20px;"/></td>
+                                        <td><img src="/Images/veg.png" style="height: 20px;"/></td>
                                     <% }else{%>
-                                        <td><img src="./images/nonveg.jpg" style="height: 20px;"/></td>
+                                        <td><img src="/Images/nonveg.jpg" style="height: 20px;"/></td>
                                     <% }%>
                                     <td><%=e.dataValues.food.quantity%></td>
                                     <td><%=e.dataValues.food.calories%> KCals</td>

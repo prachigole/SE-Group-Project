@@ -188,11 +188,9 @@ progress[value]::-webkit-progress-value {
                     </div>
                 </div>
                 <div class="success-msg">
-                    <p>Congratulations!</p>
-                    <p><%= userp.remarks%></p>
-                    <p>You totally deserve a high five from us!</p>
+                    <p>You're doing well !!!</p>
+                    <p>Goal Calculations are still in progress, they will be displayed once timeline has been reached!</p>
                 </div>
-                <button type="submit" class="submit-btn">Set a new Goal!</button>
             </div>
             
             <div class="eatRight">
@@ -253,7 +251,7 @@ progress[value]::-webkit-progress-value {
                 }
             }
             function call(x){
-                document.location.href=window.location.href+"/"+x;
+                document.location.href="http://localhost:9090/daily_progress/"+x;
             }
         </script>
         

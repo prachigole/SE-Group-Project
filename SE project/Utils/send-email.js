@@ -89,7 +89,3 @@ exports.sendemail = async (email,otp) => {
     return error;
   }
 }
-
-// sendMail()
-//   .then((result) => console.log('Email sent...', result))
-//   .catch((error) => console.log(error.message));

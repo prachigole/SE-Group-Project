@@ -12,6 +12,8 @@ router.post('/register', authController.postRegister)
 
 router.post('/send-otp', authController.sendOtp)
 
+router.get('/resend-otp', authController.resendOtp)
+
 router.get('/validate-otp', authController.getvalidateOtp)
 
 router.post('/validate-otp', authController.postvalidateOtp)

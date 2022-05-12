@@ -1,19 +1,23 @@
 const express = require('express')
 
+const isAuth = require('../Middleware/isAuth')
+
 const router = express.Router()
 
 const auth = require('../Middleware/isAuth')
 
 const userController = require('../Controller/userController')
 
-router.use(express.json())
-
 router.get('/user', userController.user)
 
-router.post('/user',userController.userPost)
+router.post('/user', userController.userPost)
 
 router.get('/bmi', userController.bmi)
 
-router.post('/bmi', userController.postBmi)
+router.post ('/bmi', userController.postBmi)
+
+router.get('/profile', userController.profile)
+
+router.post('/profile', userController.saveProfile)
 
 module.exports = router
