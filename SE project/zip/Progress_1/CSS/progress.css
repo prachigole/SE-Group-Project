@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    display: grid;
+    grid-template-rows: 100px 620px;
+    grid-template-columns: 20% 60% 20%;
+}
+
+.navbar{
+    background: #F46036;
+    grid-column: 1/-1;
+
+}
+.navbar img{
+    position: relative;
+    width: 10%;
+    height: 90%;
+    margin-top: 5px;
+    margin-left: 30px;
+    float:right;
+}
+.navbar a{
+    position: relative;
+    float:right;
+    line-height: 100px;
+    text-decoration: none;
+    color: #FFFFFF;
+    margin-left: 30px;
+
+}
+.content{
+    background-position-y: top;
+    background-color: #cccccc;
+    background-position-y: bottom;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    background-size: 65%;
+}
+
+.eatLeft{
+    background-color: #FFFFFF;;
+}
+.eatRight{
+    background-color: #FFFFFF;
+}
+
+.eatLeft h2{
+    margin: 8%;
+}
+
+.boxes{
+    width: 80%;
+    height: 80%;
+    overflow: auto;
+}
+
+.inner-btn{
+    display: flex;
+}
+
+
+
+.boxes button{
+    margin: 2% 0% 5% 12%;
+    width: 30%;
+    padding: 15px;
+    height: 50%;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+}
+/* .small-box{
+    margin: 5% 5% 25% 10%;
+    width: 100%;
+    height: 80%;
+    border: 1px solid;
+    border-radius: 10px;
+} */
+
+.content h1{
+    margin-top: 5%;
+    text-align: center;
+}
+.content-img img{
+    width: 40%;
+    height:40%;
+    margin-left: 30%;
+    margin-top: -10%;
+    
+}
+
+#progress-bar{
+    width: 85%;
+    height: 8%;
+    margin-left: 7.5%;
+    background: #F46036;
+}
+.prog{
+
+    width: 85%;
+    height: 5%;
+    border-radius: 40px;
+    background-color: #FDB797;
+    margin-left: 7.5%;  
+}
+.prog-inner{
+    position: relative;
+    width: 70%;
+    height: 100%;
+    border-radius: 40px;
+    background-color: #F46036;
+}
+
+
+progress[value]::-webkit-progress-value {
+    border-radius: 2px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+.success-msg{
+    font-size: 24px;
+    text-align: center;
+}
+.success-msg p{
+    margin: 1%;
+}
+.submit-btn{
+    width: 60%;
+    height: 7%;
+    margin: 3% 20% 0 20%;
+    cursor: pointer;
+    display: block;
+    background: #F46036;
+    outline: none;
+    border: 0;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-family: sans-serif;
+}
+
+.eatRight h2{
+    margin: 8%;
+    text-align: center;
+}
+
+.eatRight div{
+    width: 70%;
+    height: 70%;
+    margin: 20px 60px  0;
+    display: grid;
+    place-content: center;
+    background-color: #FDB797;
+    border: 3px solid #F46036;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+
+}
+
+
+
+
+
+ 
+
+  
+  
+ 
+  
+  
+  
+  
+  
+
+
+
+    
+
+   

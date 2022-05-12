@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login and Registration form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
+  <style>
+    
+/*COMMON CSS FOR ALL */
+.frsb{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.frc{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.frr{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+.fcc{
+  display: flex;
+  flex-direction: col;
+  justify-content: center;
+}
+h1{
+  text-align: center;
+  padding: 50px;
+  font-size: 40px;
+}
+.page-text{
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+img{
+  display: flex;
+  margin: auto;
+}
+.image-div{
+  margin: 50px;
+}
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
+/* div{
+  border: solid 1px black;
+} */
+.page-header{
+  background-color: #F46036;
+  padding: 0 50px;
+}
+.page-header-right{
+  background-color: #F46036;
+  padding: 25px 50px;
+}
+.plus-minus-box{
+  padding:50px;
+  justify-content: center;
+}
+/*-----------*/
+
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+
+a {
+  display: flex;
+  text-align: center;
+  margin-top: 30px;
+  justify-content: center;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  height:50px;
+  width:100px;
+
+}
+
+a:hover {
+  border-radius: 6px;
+  color:white;
+  text-decoration: underline;
+
+}
+.submit-btn {
+  width: 30%;
+  height:50px;
+  cursor: pointer;
+  background: #f46036;
+
+  outline: none;
+  border: 0;
+  border-radius: 6px;
+  color: #ffffff;
+}
+.submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    
+      <div class="page-header frr">
+        
+        <a href="">
+          Goals
+        </a>
+        <a href="">
+          My Account
+        </a>
+        <div class="img-div"><img src="./images/profile_pic.svg" alt="Profile pic" height="100px">
+      </div>
+
+    </div>
+
+    <div>
+      <h1>Goal Timeline Reached!</h1>
+    </div>
+    <div class="image-div"><img src="./images/prog.svg" width="300px"></div>
+
+    <div>
+      <div class="page-text">
+        <p>Enter current weight</p>
+      </div>
+
+      <div class="plus-minus-box fcc">
+        <div class="text-box-plus-minus"><input type="text" class="ip1" placeholder="0" min="0" id="lessthan"
+            oninput="this.value = Math.abs(this.value)" required></div>
+      </div>
+    <div class="submit">
+      <button onclick="checkFirst()" type="button" class="submit-btn">Submit and
+        Continue</button>
+    </div>
+    </form>
+  </div>
+
+
+  </div>
+  <script >
+    function checkFirst() {
+    var text = document.getElementById("lessthan").value;
+    console.log(text);
+
+    if (text <= 0) {
+      alert ("Value cannot be lesser than 0!");
+    }}
+  </script>
+
+
+</body>
+
+</html>

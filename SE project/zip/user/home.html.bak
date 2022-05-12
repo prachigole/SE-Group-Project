@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="CSS/user_progress.css">
+    </head>
+    <body onload="getBreakfastData()">
+        <div class="main">
+            <div class="navbar">
+                <img src="images/undraw_profile_pic_ic-5-t 1.svg" alt="Profile pic">
+                
+                <a href=""><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">My Account</p></a>
+                <a href=""><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Goals</p></a>
+            </div>
+            
+            <div class="eatLeft"></div>
+            <div class="eatFood">
+                    <div class="eat-title">
+                        <button style="content: \00AB; font-size: 70px; color:#F46036;">&#171;</button>
+                        <div style="text-align: center; margin: auto 10px auto 10px;">
+                            <h3 style="font-family: 'Roboto';font-size: 24px;color: #F46036;">21 February, Tuesday</h3>
+                            <h1>What did you eat today?</h1>
+                        </div>
+                        
+                        <button style="content: \00BB; font-size: 70px; color:#F46036;"><span>&#187;</span></button>
+                    </div>
+
+                    <div class="box">
+                        <span>Breakfast</span>  
+                        <button class="btn" id="bk"onclick="disData(this.id);"style="content: \002B; font-size: 20px; color:#F46036; float: right; width:25px; border-radius: 5px; background-color: transparent; border-color:#F46036 ;">&#43;</button>
+                    </div>
+                    <div id="breakfast-food" class="food breakfast-food">
+                        <table id="breakfast-item">
+                            
+                        </table>
+                        
+                        <button id="btn-submit-breakfast" onclick="viewSelectedBreakfastItems()"> &#10003;</button>
+                    </div>
+                    <!-- <div id="selectFood" class="selectFood">
+                        <table id="selected">
+                            
+                        </table>
+                    </div> -->
+                    
+
+                    <div class="box">
+                        <span>Lunch</span>
+                        <button id="ln"onclick="disData(this.id);" style="content: \002B; font-size: 20px; color:#F46036; float: right; width:25px; border-radius: 5px; background-color: transparent; border-color:#F46036 ;">&#43;</button>
+                    </div>
+                    <div id="lunch-food" class="food lunch-food">
+                        <table id="lunch-item">
+                            
+                        </table>
+                        
+                        <button id="btn-submit-breakfast" onclick="viewSelectedLunchItems()"> &#10003;</button>
+                    </div>
+
+
+                    <div class="box">
+                        <span>Snacks</span>
+                        <button id="snks"onclick="disData(this.id);" style="content: \002B; font-size: 20px; color:#F46036; float: right; width:25px; border-radius: 5px; background-color: transparent; border-color:#F46036 ;">&#43;</button>
+                    </div>
+                    <div id="snacks-food" class="food snacks-food">
+                        <table id="snacks-item">
+                            
+                        </table>
+                        
+                        <button id="btn-submit-breakfast" onclick="viewSelectedSnacksItems()"> &#10003;</button>
+                    </div>
+
+
+                    <div class="box">
+                        <span>Dinner</span>
+                        <button id="dnr"onclick="disData(this.id);" style="content: \002B; font-size: 20px; color:#F46036; float: right; width:25px; border-radius: 5px; background-color: transparent; border-color:#F46036 ;">&#43;</button>
+                    </div>
+                    <div id="dinner-food" class="food dinner-food">
+                        <table id="dinner-item">
+                            
+                        </table>
+                        
+                        <button id="btn-submit-breakfast" onclick="viewSelectedDinnerItems()"> &#10003;</button>
+                    </div>
+                    
+
+            </div>
+            <div class="eatRight">
+                <div>
+                    <p style="font-size: 25px;">Total Calories</p>
+                    <h1>1200</h1>
+                </div>
+				<div>
+                    <p style="font-size: 25px;">Your Calories</p>
+                    <h1>1200</h1>
+                </div>
+				<div>
+                    <p style="font-size: 25px;">Remaining Calories</p>
+                    <h1>1200</h1>
+                </div>
+            </div>
+        </div>
+        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+        <script type="text/javascript" src="JS/home.js">
+            
+        </script>
+        
+    </body>
+</html>

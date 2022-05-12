@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/Css/login.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            
+            <div class="left-container">
+                <div class="image">
+                        
+                </div>
+            </div>
+            <div class="right-container">
+                  <div class="login-form">
+                    <img src="/Images/undraw_profile_pic_ic-5-t 1.svg" alt="image Not found">
+                    <div class="alert" style="background-color: #28a745;">
+                        <strong> <%= message %></strong><br>
+                        <center><strong> <%= warning %></strong></center>
+                    </div>
+                    <form action="/validate-otp" method="POST">
+                    <span id="message"></span></br></br>
+                        <label for="otp">OTP</label>
+                    </br>
+                        <input type="hidden" name="email" value="<%= email %>">
+                        <input type="hidden" name="generatedotp" value = "<%= otp%>">
+                        <input type="text" style="margin-bottom: -15px;" name="otp" id="otp" onchange="OTPNumberFillOnlyNumber();">
+                    </br>
+                        <div class="reOTP">
+                        <p><a href="send-otp">resend OTP?</a></p>
+                        </div></br></br>
+                    <span id="OTPmessage"></span></br>
+                    <%  if(success) { %>
+                        <div class="alert" style="background-color: #28a745;">
+                            <strong><%= success %></strong>
+                          </div>
+                        <% } %>
+                    <%  if (error) { %>
+                    <div class="alert" style="background-color: #f44336;">
+                        <strong><%= error %></strong>
+                      </div>
+                    <% } %>
+                    <button type="submit" class="btn-register" style="margin-top: 60px;" onclick="loginValidation();">Verify OTP</button>
+                    </form>  
+                  </div>
+                 
+            </div>
+            <img src="/Images/undraw_fitness_tracker_3033 1.svg" alt="this images not found">
+        
+        </div>
+        <script type="text/javascript" src="/Js/login.js"></script>
+    </body>
+</html>
