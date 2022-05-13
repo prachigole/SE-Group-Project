@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/Css/admin.css">
+    
+        <title>Excercise</title>
+    </head>
+<body>
+    <div class="main2">
+        <div class="navbar">
+            <img src="/Images/profile_pic.svg" alt="Profile pic">
+            
+            <a href="/admin/adminProfile"><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Profile</p></a>
+            <a href="/admin/dashboard"><p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Home</p></a>
+        </div>
+
+        <% if(formType == "create")
+                {
+                    %>
+                  <form action="/admin/newExcercise" class="form-container form-container2" method="post">
+            <%
+        } else {%>
+            <form action="/admin/editExcercise" class="form-container form-container2" method="post">
+            <%
+        } %>
+            <h1>Excercise</h1>
+            <div class="errormsg"><%= message %></div>
+            <input type="hidden" name="excercise_id" value="<%=excerciseData.excercise_id %>" />
+
+            <label for="text"><b>Excercise Name</b></label>
+            <input type="text" required placeholder="Enter Excercise Name" value="<%= excerciseData.excercise_name %>" name="ex_name">
+        
+            <label for="psw"><b>Excercise Level</b></label>
+            <select name="ex_level" required id="ex-level">
+                <option value="null" selected="true" disabled> -- Select Excercise Level --</option>
+                <% for (var key in execerciseLevel)
+                {
+                    %>
+                    <option value="<%= key %>"  <%if (excerciseData.excercise_level == key){ %> selected="true" <% } %> ><%= execerciseLevel[key] %></option>
+
+                    <%
+                }%>
+            </select>
+      
+            <button type="submit" class="btn">Save</button>
+          </form>
+    </div>
+</body>
+
+</html>

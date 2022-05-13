@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .main2 {
+        display: grid;
+        grid-template-rows: 70px;
+    }
+
+    .navbar {
+        background: #F46036;
+        grid-column: 1/-1;
+    }
+
+    .navbar img {
+        position: relative;
+        width: 10%;
+        height: 90%;
+        margin-top: 5px;
+        margin-left: 30px;
+        float: right;
+    }
+
+    .navbar a {
+        position: relative;
+        float: right;
+        line-height: 70px;
+        text-decoration: none;
+        color: #FFFFFF;
+        margin-right: 50px;
+    }
+
+    /* landing page start */
+    .home {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: url(/Images/bgHome.jpeg) no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .home .content {
+        max-width: 60rem;
+    }
+
+    .home .content h3 {
+        font-size: 6rem;
+        text-transform: uppercase;
+        color: #fff;
+    }
+
+    .home .content p {
+        font-size: 2rem;
+        font-weight: lighter;
+        line-height: 1.8;
+        padding: 1rem 0;
+        color: #eee;
+    }
+
+    /* landing page end */
+    .about-section {
+        padding: 40px;
+        text-align: center;
+        background-color: black;
+        color: white;
+        line-height: 35px;
+    }
+</style>
+
+<body>
+    <div class="main2">
+        <div class="navbar">
+            <a href="/login">
+                <p style="font-family:'Roboto';font-style: normal;font-size: 18px;">Login</p>
+            </a>
+            <a href="/">
+                <p style="font-family:'Roboto';font-style: normal;font-size: 18px;">Home</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- Contact section starts  -->
+
+    <div class="about-section">
+        <h1>Contact Us</h1>
+        <p>detoxify2022@gmail.com</p>
+    </div>
+
+    <!-- Contact section ends -->
+</body>
+
+</html>

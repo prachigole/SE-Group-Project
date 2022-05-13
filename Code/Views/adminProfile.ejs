@@ -1,0 +1,277 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/Css/styles.css"> -->
+  
+
+    <title>Add New Excercise</title>
+
+    <style>
+        /* Button used to open the contact form - fixed at the bottom of the page */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .errormsg {
+            color : #F46036;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .main2 {
+            display: grid;
+            grid-template-rows: 100px;
+        }
+
+        .navbar {
+            background: #F46036;
+            grid-column: 1/-1;
+
+        }
+
+        .navbar img {
+            position: relative;
+            width: 10%;
+            height: 90%;
+            margin-top: 5px;
+            margin-left: 30px;
+            float: right;
+        }
+
+        .navbar a {
+            position: relative;
+            float: right;
+            line-height: 100px;
+            text-decoration: none;
+            color: #FFFFFF;
+            margin-left: 30px;
+        }
+
+        .hero {
+            height: 90%;
+            width: 100%;
+            background-image: linear-gradient(rgba(248, 149, 122, 1), rgba(248, 149, 122, 1));
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+
+        }
+
+        .img {
+            width: 62% !important;
+            height: 80%;
+            left: 38%;
+            top: 9%;
+            margin: 0 0 0 0px;
+            position: relative;
+        }
+
+
+        .form-box {
+            width: 750px;
+            height: 642px;
+            position: absolute;
+            margin: 0% auto;
+            background: #fff;
+            padding-left: 1 px;
+            overflow: hidden;
+        }
+
+
+        .logo {
+            float: left;
+            margin: 15px;
+            height: 40px;
+        }
+
+
+        h1 {
+            font-size: 45px;
+        }
+
+
+        .button-box {
+            width: 235px;
+            margin: 35px auto;
+            position: relative;
+            box-shadow: 0 0 20px 9px grey;
+            border-radius: 20px;
+        }
+ 
+        .button {
+            height: 20px;
+            width: 20px;
+            background: white;
+            border: none;
+            margin: 15px 4px 20px;
+            font-size: 40px;
+            color: #F46036;
+
+        }
+
+        .wrapper {
+            border: 2px #F46036 solid;
+            width: 400px;
+            height: 50px;
+            padding: 0px;
+            display: flex;
+            margin: 0.5%;
+            border-radius: 5px;
+        }
+
+        .ip1 {
+            width: 100%;
+            display: inline-block;
+            padding:2%;
+            margin: 2%;
+            border: transparent;
+            outline: none;
+            background: transparent;
+            border-radius: 5px;
+        }
+
+        .input-group {
+            margin-top: 7%;
+            position: absolute;
+            align-content: center;
+            padding: 5%;
+            width: 90%;
+        }
+        
+        .space {
+            margin-left: 2%;
+        }
+
+        .input-field {
+            width: 103%;
+            padding: 14px 0;
+            margin: 5px 0;
+            border: 2px solid #F46036;
+            outline: none;
+            background: transparent;
+            border-radius: 5px;
+        }
+
+
+        h5 {
+            width: 250px;
+        }
+
+        h6,
+        label {
+            font-family: Trebuchet MS;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 28px;
+        }
+
+        table {
+            margin: 0px;
+            width: 135%;
+            padding: 0px;
+            border: transparent;
+        }
+
+        .submit-btn {
+            width: 67%;
+            margin : 2%;
+            padding: 3%;
+            cursor: pointer;
+            display: block;
+            background: #F46036;
+            outline: none;
+            border: 0;
+            border-radius: 6px;
+            color: #FFFFFF;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main2">
+        <div class="navbar">
+            <img src="/Images/profile_pic.svg" alt="Profile pic">
+
+            <a href="/logout">
+                <p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Logout</p>
+            </a>
+            <a href="/admin/adminProfile">
+                <p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Profile</p>
+            </a>
+            <a href="/admin/dashboard">
+                <p style="font-family:'Roboto';font-style: normal;font-size: 20px;">Home</p>
+            </a>
+        </div>
+    </div>
+    <div class="hero">
+        <div class="form-box">
+
+            <form id="register" class="input-group" method="post" action="/admin/adminProfile">
+                <h1>Admin Profile</h1><br><br>
+                <div class="errormsg"><%= message %></div>
+
+                <table class="space">
+                    <tr>
+                        <td>
+                            <h3>Username </h3>
+                            <div class="wrapper">
+                                <input type="text" class="ip1" name="name" value="<%=profileData.name %>" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h3>Email</h3>
+                            <div class="wrapper">
+                                <input type="text" class="ip1" name="email_id" value="<%=profileData.email_id %>" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h3>DOB</h3>
+                            <div class="wrapper">
+                                <input type="date" name="dob" class="ip1" placeholder="0" min="0" id="ip3" value="<%=profileData.dob %>">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Gender</h3>
+                            <div class="wrapper">
+                                <select name="gender" class="ip1">
+                                    <option value="null" selected="true" disabled> -- Select Gender --</option>
+                                        <% for (var key in glist)
+                                        {
+                                            %>
+                                            <option value="<%= key %>" <%if (profileData.gender == key){ %> selected="true" <% } %> ><%= glist[key] %></option>
+
+                                            <%
+                                        }%>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+                <span id="msg"></span>
+                <button type="submit" class="submit-btn space">Update Profile</button>
+
+            </form>
+        </div>
+        <img class="img" src="/Images/bg.svg" width="250" height="250">
+
+    </div>
+</body>
+
+</html>

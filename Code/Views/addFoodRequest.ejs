@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login and Registration form</title>
+    <link rel="stylesheet" href="/Css/addFood.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+
+<style>
+    
+ul {
+  list-style-type: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #F46036;
+}
+ul img {
+        position: relative;
+        width: 10%;
+        height: 70%;
+        margin-left: 30px;
+        margin-top: 10px;
+        float: right;
+}
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  margin: 10px;
+  text-decoration: none;
+}
+
+   input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+</style>
+</head>
+<body>
+
+  <!-- <script type="text/javascript"></script> -->
+    <ul>
+      <img src="/Images/profile_pic.svg" alt="Profile pic" style="width: 70px;">
+      <li>
+        <a href="/logout">
+          <p style="font-family:'Roboto';font-style: normal;font-size: 18px;">Logout</p>
+        </a>
+      </li>
+      <li>
+        <a href="/add-food-request">
+          <p style="font-family:'Roboto';font-style: normal;font-size: 18px;">Food Request</p>
+        </a>
+      </li>
+      <li>
+        <a href="/profile">
+          <p style="font-family:'Roboto';font-style: normal;font-size: 18px;">Reset Goal</p>
+        </a>
+      </li>
+      <li>
+        <a href="/progress">
+          <p style="font-family:'Roboto';font-style: normal;font-size: 18px;">View Progress</p>
+        </a>
+      </li>
+      <li>
+        <a href="/">
+          <p style="font-family:'Roboto';font-style: normal;font-size: 18px;">Home</p>
+        </a>
+      </li>
+    </ul>
+
+    <div class="abc">
+      <form action="/add-food-request" method="post">
+        <h1><center>Request Food</center></h1>
+        <h2><center>What food do you want to add to your list?</center></h2><br>
+        <center><textarea class="input" rows="4" cols="50" name="foodlist" placeholder="add food items"></textarea>
+      
+        <button type="submit" class="submit-btn">Submit and Continue</button>
+      </form>
+    </div>
+  </body>
+  </html>

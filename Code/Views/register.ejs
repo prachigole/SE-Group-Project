@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration form</title>
+    <link rel="stylesheet" href="/Css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<style>
+    
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #F46036;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  margin: 10px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #F8957A;
+}
+
+
+   input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+</style>
+</head>
+<body>
+   
+
+	<script src="/Js/script.js"></script>
+    <div class="hero">
+        <div class="form-box">  
+            <form action="/register" method="post" id="register" class="input-group">
+                <h1>Enter the following details</h1><br><br>
+                <table>
+                	<tr>
+                	<tr>
+                		<td colspan="0.2">
+                             <h5>Name</h5>
+                        <div class="wrapper">
+                        <input type="text" name="username" class="ip1" id="ip1">
+                    </div>      
+                        </td>
+                        <td>
+                            <h6><label for="gender">Gender</label><br>
+                            <select name="gender" id="gender" class="input-field2">
+                            <option value="select">Select</option>
+                            <option value=1>male</option>
+                            <option value=2>female</option>
+                            <option value=3>others</option>
+                        </select>
+                            </td>
+            		
+            	</tr>
+            	<tr>
+            		<td>
+            			<h6>DOB</h6>
+            			<div class="wrapper">
+                		<input type="date" name="dob" class="ip1" placeholder="0" min="0" id="ip3">                
+                	</div>
+
+            		</td>
+            		<td>
+            		
+
+                        <h5>TimeLine to Achieve goal</h5>
+                        <!-- <div class="wrapper2"> -->
+                            <select name="duration" class="input-field1" id="month">
+                                <option value="select">Select</option>
+                                <option value=1>1 MONTH</option>
+                                <option value=2>2 MONTHS</option>
+                                <option value=3>3 MONTHS</option>
+                                <option value=4>4 MONTHS</option>
+                                <option value=5>5 MONTHS</option>
+                                <option value=6>6 MONTHS</option>
+    
+                            </select>
+                    </div>
+                	</div>
+            		</td>
+            	</tr>
+                <tr>
+                    <td>
+                        <h6>Weight in Kgs</h6>
+                            <div class="wrapper">
+                            <img src='/Images/sub.png' class="button" onclick="decrement(this.parentNode.getElementsByTagName('input')[0]);" />
+                            <input type="number" name="weight" class="ip3" placeholder="0" min="0" id="lessthan" oninput="this.value = Math.abs(this.value)">
+                            <img src='/Images/add.png' class="button" onclick="increment(this.parentNode.getElementsByTagName('input')[0]);" />
+                            
+                        </div>
+                    </td>
+    
+                    <td>    <h5>Height in cms</h5>
+                            <div class="wrapper2">
+                            <img src='/Images/sub.png' class="button" onclick="decrement(this.parentNode.getElementsByTagName('input')[0]);" />
+                            <input type="text" name="height" class="ip2" placeholder="0" min="0" id="h1" oninput="this.value = Math.abs(this.value)">
+                            <img src='/Images/add.png' class="button" onclick="increment(this.parentNode.getElementsByTagName('input')[0]);" />
+                        </td>
+    
+                    </tr>
+            	<tr>
+            		<td>
+            			<h6><label for="activity">Activity level</label><br>
+                	<select name="activityLevel" id="dp" class="input-field1">
+                    <option value="select">Select</option>
+                    <option value=1>low</option>
+                    <option value=2>moderate</option>
+                    <option value=3>high</option>
+                </select>
+                	
+            		</td>
+            		
+                    <td>
+                        <h6>Goal weight</h6>
+                        <div class="wrapper2">
+                        <input type="number" name="goalWeight" class="ip2" id="ip2" required name="number">
+                    </td>
+            	</tr>
+               
+            </table>
+                <button type="submit" class="submit-btn" onclick="getData();">Register</button>
+            </form>
+        </div>
+        <img class="img" src="/Images/bg.svg" width="250" height="250">
+      
+    </div>
+</body>
+</html>
